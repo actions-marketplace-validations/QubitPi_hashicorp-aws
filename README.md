@@ -59,8 +59,8 @@ team. Giving our developer fully **automated** control over infrastructure bring
 
 ![Error loading new.png](https://github.com/QubitPi/QubitPi/blob/master/img/hashicorp-aws/new.png?raw=true)
 
-Example
--------
+How to Use HashiCrop AWS
+------------------------
 
 ### Step 1 - Setting up HashiCrop Packer & Terraform Template Files
 
