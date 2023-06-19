@@ -84,7 +84,7 @@ HashiCorp AWS action follows [HashiCrop's best practice][HashiCorp Tutorial] by 
 
 > Diagram generated from [tree.nathanfriend.io](https://tree.nathanfriend.io/)
 
-- The **aws-my-app.pkr.hcl** is the standard [HashiCorp Packer Template][HashiCorp Packer Template] file. For example
+- The **aws-my-app.pkr.hcl** is the standard [HashiCorp Packer Template][HashiCorp Packer Template] file.
 - The **variables.pkr.hcl**  is the standard [Packer Variable][HashiCorp Packer Variables] definitions
 - The **main.tf** is the standard [HashiCorp Terraform Config File][HashiCorp Terraform Config File]
 - HashiCorp AWS configures AMI image using
@@ -137,6 +137,24 @@ In the example above:
   - [**AWS_ACCESS_KEY_ID**](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
   - [**AWS_SECRET_ACCESS_KEY**](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
   - [**AWS_REGION**](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+ 
+    - To register AMI to the specified `AWS_REGION`, please put the following definition in the **variables.pkr.hcl** file:
+
+      ```hcl
+      variable "aws_image_region" {
+        type =  string
+        sensitive = true
+      }
+      ```
+
+    - To deploy EC2 instance to the specified `AWS_REGION`, please have the following variable decalration in the **main.tf** file:
+   
+      ```tf
+      variable "aws_deploy_region" {
+        type = string
+        description = "The EC2 region"
+      }
+      ```
 
 - The Security Group of the EC2 instance, however, still needs to be manually configured. This is planned to be
   automated in the near future.
